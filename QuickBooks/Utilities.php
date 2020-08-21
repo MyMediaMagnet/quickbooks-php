@@ -87,7 +87,7 @@ class QuickBooks_Utilities
 		
 		foreach ($masks as $key)
 		{
-			if ($key{0} == '<')
+			if ($key[0] == '<')
 			{
 				// It's an XML tag
 				$contents = QuickBooks_Utilities::_extractTagContents(trim($key, '<> '), $message);

@@ -401,21 +401,21 @@ class QuickBooks_IPP_Object
 						//$xml .= QuickBooks_XML::encode($value, $for_qbxml);
 						//$xml .= '</' . $key . '>' . QUICKBOOKS_CRLF;
 						
-						if (substr($key, -3, 3) == 'Ref' and $svalue{0} == '[')
+						if (substr($key, -3, 3) == 'Ref' and $svalue[0] == '{')
 						{
-							$svalue = trim($svalue, '[]-');
+							$svalue = trim($svalue, '{}-');
 						}
-						else if ($key == 'Id' and $svalue{0} == '[')
+						else if ($key == 'Id' and $svalue[0] == '{')
 						{
-							$svalue = trim($svalue, '[]-');
+							$svalue = trim($svalue, '{}-');
 						}
-						else if ($key == 'DefinitionId' and $svalue{0} == '[')
+						else if ($key == 'DefinitionId' and $svalue[0] == '{')
 						{
-							$svalue = trim($svalue, '[]-');
+							$svalue = trim($svalue, '{}-');
 						}
-						else if ($key == 'TxnId' and $svalue{0} == '[')
+						else if ($key == 'TxnId' and $svalue[0] == '{')
 						{
-							$svalue = trim($svalue, '[]-');
+							$svalue = trim($svalue, '{}-');
 						}
 
 						$xml .= str_repeat("\t", $indent + 1) . '<' . $key . '>' . QuickBooks_XML::encode($svalue, false) . '</' . $key . '>' . QUICKBOOKS_CRLF;
@@ -444,19 +444,19 @@ class QuickBooks_IPP_Object
 			{
 				$for_qbxml = false;
 				
-				if (substr($key, -3, 3) == 'Ref' and $value{0} == '{')
+				if (substr($key, -3, 3) == 'Ref' and $value[0] == '{')
 				{
 					$value = trim($value, '{}-');
 				}
-				else if ($key == 'Id' and $value{0} == '{')
+				else if ($key == 'Id' and $value[0] == '{')
 				{
 					$value = trim($value, '{}-');	
 				}
-				else if ($key == 'DefinitionId' and $value{0} == '{')
+				else if ($key == 'DefinitionId' and $value[0] == '{')
 				{
 					$value = trim($value, '{}-');
 				}
-				else if ($key == 'TxnId' and $value{0} == '{')
+				else if ($key == 'TxnId' and $value[0] == '{')
 				{
 					$value = trim($value, '{}-');
 				}
